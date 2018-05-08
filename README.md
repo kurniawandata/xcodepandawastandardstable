@@ -1,14 +1,11 @@
 # xcodepandawastandardstable
- Aplikasi untuk membangun NAT, DHCP Server, Bandwidth managemen, access log, cache web, port forwarding, VPN Server, apache2, mysql-server, dns server, virtual server &amp; samba secara cepat termasuk juga konfigurasinya di Ubuntu Server 16.04 LTS. (Stable Version)
 
-# xcodepandawarouter
-
-X-code Pandawa Router for Ubuntu 16.04 LTS
+X-code Pandawa Standard for Ubuntu 16.04 LTS v1.0 Stable
 ------------------------------------------
 
 ![alt text](http://xcode.or.id/04_small-logo.png)
 
-Aplikasi untuk membangun NAT, DHCP Server, bandwidth managemen, access log, cache web, port forwarding, VPN Server, apache2, mysql-server,  secara cepat. 
+Aplikasi untuk membangun NAT, DHCP Server, bandwidth managemen, access log, cache web, port forwarding, VPN Server, apache2, mysql-server, virtualhost, DNS Server & Samba secara cepat termasuk konfigurasinya. 
 
 Cara menggunakan :
 ------------------
