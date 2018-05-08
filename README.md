@@ -14,7 +14,7 @@ Pastikan di CPU anda sudah terinstall Ubuntu Server 16.04 dengan 2 LAN Card.
 
 Jika belum diinstall bisa download ISO-nya 
 
-http://releases.ubuntu.com/16.04/ubuntu-16.04.4-desktop-i386.iso (32 bit)
+http://releases.ubuntu.com/16.04/ubuntu-16.04.4-server-i386.iso (32 bit)
 
 http://releases.ubuntu.com/16.04/ubuntu-16.04.4-server-amd64.iso (64 bit)
 
@@ -34,6 +34,11 @@ chmod -R 777 *
 ./xcoderouter (untuk router)
 
 ./xcodeserver (untuk server
+
+Screenshoot untuk X-code Pandawa Router for Ubuntu 16.04 (stable Version)
+-------------------------------------------------------------------------
+
+![alt text](http://xcode.or.id/04_small-logo.png)
 
 Support gratis
 --------------
