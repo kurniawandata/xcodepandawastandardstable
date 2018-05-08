@@ -37,11 +37,6 @@ cd /xcodepandawastandard
 
 ./xcodeserver (untuk server
 
-Screenshoot untuk X-code Pandawa Router for Ubuntu 16.04 (stable Version)
--------------------------------------------------------------------------
-
-![alt text](http://xcode.or.id/04_small-logo.png)
-
 Support gratis
 --------------
 
