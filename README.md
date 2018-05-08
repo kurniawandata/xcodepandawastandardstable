@@ -10,9 +10,13 @@ Aplikasi untuk membangun NAT, DHCP Server, bandwidth managemen, access log, cach
 Cara menggunakan :
 ------------------
 
-Pastikan di CPU anda sudah terinstall Ubuntu Server 18.04 dengan 2 LAN Card.
+Pastikan di CPU anda sudah terinstall Ubuntu Server 16.04 dengan 2 LAN Card.
 
-Jika belum diinstall bisa download ISO-nya di http://releases.ubuntu.com/18.04/ubuntu-18.04-live-server-amd64.iso
+Jika belum diinstall bisa download ISO-nya 
+
+http://releases.ubuntu.com/16.04/ubuntu-16.04.4-desktop-i386.iso (32 bit)
+
+http://releases.ubuntu.com/16.04/ubuntu-16.04.4-server-amd64.iso (64 bit)
 
 Perintah instalasi dan menjalankannya
 -------------------------------------
@@ -34,9 +38,9 @@ chmod -R 777 *
 Support
 -------
 
-Training X-code pandawa standard gratis 
+Training X-code pandawa standard gratis di Jogja (Jadwal bisa kesepakatan)
 
-http://xcodetraining.com/xcodepandawa
+http://xcodetraining.com/xcodepandawa 
 
 Progammer 
 ---------
