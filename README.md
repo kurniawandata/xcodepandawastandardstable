@@ -52,6 +52,11 @@ Progammer
 
 Programmer : Kurniawan. xcode.or.id. trainingxcode@gmail.com
 
+Donasi
+------ 
+
+Bagi yang ingin donasi dapat kontak Lina : Phone / whatsapp : 0813 9388 2080 
+
 License
 ------- 
 
