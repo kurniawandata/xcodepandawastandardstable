@@ -29,8 +29,6 @@ dpkg -i xcodepandawastandardstable.deb
 
 cd /xcodepandawastandard
 
-chmod -R 777 *
-
 ./xcoderouter (untuk router)
 
 ./xcodeserver (untuk server
