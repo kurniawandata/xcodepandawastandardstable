@@ -35,10 +35,10 @@ chmod -R 777 *
 
 ./xcodeserver (untuk server
 
-Support
--------
+Support gratis
+--------------
 
-Training X-code pandawa standard gratis di Jogja (Jadwal bisa kesepakatan)
+Training X-code pandawa standard gratis di Jogja 
 
 http://xcodetraining.com/xcodepandawa 
 
