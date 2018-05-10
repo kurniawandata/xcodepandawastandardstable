@@ -50,9 +50,11 @@ case $choice in
     grub-mkconfig -o /boot/grub/grub.cfg
     cp support/resolved.conf /etc/systemd/
     sudo systemctl restart systemd-resolved
-	read -p "Tekan enter untuk restart"
+    cp support/interfaces /etc/network/
+    sudo nano /etc/network/interfaces
+    read -p "Tekan enter untuk restart"
     reboot
-	fi
+    fi
     ;;
 2)  if [ -z "$(ls -l /etc/network/interfaces)" ]; then
     echo "Tidak terdeteksi ada /etc/network/interfaces"
