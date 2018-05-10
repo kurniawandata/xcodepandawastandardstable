@@ -41,7 +41,7 @@ Perintah instalasi dan menjalankannya
 
 - ./xcodeserver (untuk server
 
-Perbaikan dari v1.0.0
+Perbaikan dari v1.0.0 ke 1.0.1
 ---------------------
 
 - Instalasi dengan deb dihapus, cukup menggunakan git clone
