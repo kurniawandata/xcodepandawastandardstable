@@ -29,6 +29,8 @@ Download : git clone https://github.com/kurniawandata/xcodepandawastandardstable
 
 cd xcodepandawastandardstable
 
+chmod -R 777 *
+
 ./xcoderouter (untuk router)
 
 ./xcodeserver (untuk server
