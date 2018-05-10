@@ -10,7 +10,7 @@ Aplikasi untuk membangun NAT, DHCP Server, bandwidth managemen, access log, cach
 Cara menggunakan :
 ------------------
 
-Pastikan di CPU anda sudah terinstall Ubuntu Server 16.04 dengan 2 LAN Card.
+Pastikan di CPU anda sudah terinstall Ubuntu Server 16.04 dengan 2 LAN Card jika ingin dibangun router. Jika server aja, cukup 1 LAN Card.
 
 Jika belum diinstall bisa download ISO-nya 
 
