@@ -1,6 +1,6 @@
 # xcodepandawastandardstable
 
-X-code Pandawa Standard for Ubuntu 16.04 LTS v1.0 Stable
+X-code Pandawa Standard for Ubuntu 16.04 LTS v1.0.1 Stable
 ------------------------------------------
 
 ![alt text](http://xcode.or.id/04_small-logo.png)
@@ -29,7 +29,7 @@ Download : git clone https://github.com/kurniawandata/xcodepandawastandardstable
 
 cd xcodepandawastandardstable
 
-dpkg -i xcodepandawastandardstable.deb
+dpkg -i xcodepandawastandardstable_1.0.1.deb
 
 cd /xcodepandawastandard
 
