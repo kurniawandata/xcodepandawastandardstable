@@ -25,15 +25,17 @@ Dari kambing (Indonesia)
 Perintah instalasi dan menjalankannya
 -------------------------------------
 
-Download : git clone https://github.com/kurniawandata/xcodepandawastandardstable
+- Download : 
 
-cd xcodepandawastandardstable
+- git clone https://github.com/kurniawandata/xcodepandawastandardstable
 
-chmod -R 777 *
+- cd xcodepandawastandardstable
 
-./xcoderouter (untuk router)
+- chmod -R 777 *
 
-./xcodeserver (untuk server
+- ./xcoderouter (untuk router)
+
+- ./xcodeserver (untuk server
 
 Perbaikan dari v1.0.0
 ---------------------
