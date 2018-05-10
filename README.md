@@ -29,10 +29,6 @@ Download : git clone https://github.com/kurniawandata/xcodepandawastandardstable
 
 cd xcodepandawastandardstable
 
-dpkg -i xcodepandawastandardstable_1.0.1.deb
-
-cd /xcodepandawastandard
-
 ./xcoderouter (untuk router)
 
 ./xcodeserver (untuk server
