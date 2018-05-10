@@ -39,7 +39,7 @@ Perintah instalasi dan menjalankannya
 
 - ./xcoderouter (untuk router)
 
-- ./xcodeserver (untuk server
+- ./xcodeserver (untuk server)
 
 Perbaikan dari v1.0.0 ke 1.0.1
 ---------------------
