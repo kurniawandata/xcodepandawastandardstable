@@ -1,0 +1,247 @@
+#!/bin/bash
+#Progammer : Kurniawan. trainingxcode@gmail.com. xcode.or.id.
+#Program ini dapat digunakan untuk personal ataupun komersial.
+#X-code Media - xcode.or.id / xcodetraining.com
+again='y'
+while [ $again == 'Y' ] || [ $again == 'y' ];
+do
+clear
+echo "=================================================================";
+echo " X-code Pandawa Server for Ubuntu 16.04                          ";
+echo " Progammer : Kurniawan. xcode.or.id                              ";
+echo " Version 1.0.1 - 11/05/2018                                      ";
+echo "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=";
+echo " Installasi server & konfigurasi                                 ";
+echo " [1]  Install X-code Pandawa Server (Untuk ganti nama ke eth0)   ";
+echo " [2]  Setting IP Address untuk eth0                              ";
+echo " [3]  Install Apache2, Mysql-server, phpmyadmin                  ";
+echo " [4]  Install Virtualhost                                        ";
+echo " [5]  Setting Virtualhost                                        ";
+echo " [6]  Edit Konfigurasi pada php.ini                              ";
+echo " [7]  Edit Konfigurasi pada apache2.conf                         ";
+echo " [8]  Install DNS Server                                         ";
+echo " [9]  Masukkan domain baru pada DNS Server                       ";
+echo " [10] Setting domain yang sudah ada di DNS Server                ";
+echo " [11] Edit /etc/hosts                                            ";
+echo " [12] Install Samba Server                                       ";
+echo " [13] Share /home/share tanpa password : read only               ";
+echo " [14] Share /home/share tanpa password : : read & write          ";
+echo " [15] Share /home/share dipassword : read only                   ";
+echo " [16] Share /home/share dipassword : read & write                ";
+echo " =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-";
+echo " Log Server                                                      ";
+echo " [17] Cek file access.log.*                                      ";
+echo " [18] Lihat log pengunjung website (real time)                   ";
+echo " [19] Lihat semua log pengunjung website                         ";
+echo " [20] Reboot                                                     ";
+echo " [21] Exit                                                       ";
+echo "=================================================================";
+read -p " Masukkan Nomor Pilihan Anda antara [1 - 21] : " choice;
+echo "";
+case $choice in
+1)  if [ -z "$(sudo ls -A /etc/default/grub)" ]; then
+    echo "Tidak terdeteksi grub, anda yakin pakai Ubuntu 16.04 ?"
+    else
+    cp support/grub /etc/default/grub
+    grub-mkconfig -o /boot/grub/grub.cfg
+    cp support/resolved.conf /etc/systemd/
+    sudo systemctl restart systemd-resolved
+	read -p "Tekan enter untuk restart"
+    reboot
+	fi
+    ;;
+2)  if [ -z "$(ls -l /etc/network/interfaces)" ]; then
+    echo "Tidak terdeteksi ada /etc/network/interfaces"
+    else
+    cp support/server/interfaces /etc/network/
+    sudo nano /etc/network/interfaces
+    read -p "Apakah anda mau restart koneksi eth0 sekarang? y/n :" -n 1 -r
+    echo 
+        if [[ ! $REPLY =~ ^[Nn]$ ]]
+        then
+        ip addr flush eth0 && sudo systemctl restart networking.service
+        sudo ifconfig
+        fi
+    fi
+    ;;
+3)  read -p "Apakah anda mau yakin mau install apache2, mysql-server & phpmyadmin ? y/n :" -n 1 -r
+    echo  ""
+    if [[ ! $REPLY =~ ^[Nn]$ ]]
+    then
+    sudo apt-get install apache2
+    echo "Apache2 sudah diinstall"
+    sudo apt-get install mysql-server
+    echo "DHCP Server sudah diinstall"
+    sudo apt-get install phpmyadmin
+    echo "PHPMyadmin sudah diinstall"
+    fi
+    ;;
+4)  echo -n "Masukkan alamat domain / subdomain : "
+    read namadomain
+    if [ -z "$(ls -A /home/$namadomain/*)" ]; then
+    echo "Installasi virtualhost dengan domain"
+    sudo useradd -m $namadomain
+    sudo passwd $namadomain
+    sudo mkdir -p /home/$namadomain/public_html
+    sudo chown -r $namadomain.$namadomain /home/$namadomain/public_html
+    sudo chmod -R 755 /home/$namadomain
+    echo "Selamat datang di web x-code pandawa" >> /home/$namadomain/public_html/index.html
+    sudo chmod 755 /home/$namadomain/public_html/index.html
+    sudo chown $namadomain.$namadomain /home/$namadomain/public/index.html
+    sudo cp support/apache2.conf /etc/apache2/
+    sudo cp support/domain.conf /etc/apache2/sites-available/$namadomain.conf
+    sudo nano /etc/apache2/sites-available/$namadomain.conf
+    sudo a2ensite $namadomain.conf
+    sudo service apache2 reload
+    else
+    echo "Domain yang anda masukkan sudah ada"
+    fi
+    ;;   
+5)  echo -n "Masukkan alamat domain / subdomain : "
+    read namadomain
+    if [ -z "$(ls -A /etc/apache2/sites-available/$namadomain.conf)" ]; then
+    echo "Domain tersebut tidak ada, install virtualhost dulu"
+    else
+    sudo nano /etc/apache2/sites-available/$namadomain.conf
+    sudo a2ensite $namadomain.conf
+    sudo service apache2 reload
+    fi
+    ;;
+6)  sudo nano /etc/php/7.0/apache2/php.ini
+    ;;   
+
+7)  sudo nano /etc/apache2/apache2.conf
+    ;;
+
+8)  sudo apt-get install bind9
+    ;;
+
+9)  echo -n "Masukkan alamat domain yang akan diredirect : "
+    read namadomain2
+    if [ -z "$(ls -A /etc/bind/db.$namadomain2)" ]; then
+    sudo cp support/db.local /etc/bind/db.$namadomain2
+    sudo nano /etc/bind/db.$namadomain2
+    sudo cp support/named.conf /etc/bind/named.conf
+    sudo nano /etc/bind/named.conf
+    sudo service bind9 restart
+    else
+    echo "Domain yang anda redirect sudah ditambahkan sebelumnya"
+    fi
+    ;;
+
+10)  echo -n "Masukkan alamat domain yang akan diedit : "
+    read namadomain3
+    if [ -z "$(ls -A /etc/bind/db.$namadomain3)" ]; then
+    echo "Domain yang anda masukkan belum ditambahkan, silahkan tambahkan dulu"
+    else 
+    sudo nano /etc/bind/db.$namadomain3
+    sudo nano /etc/bind/named.conf
+    sudo service bind9 restart
+    
+    fi
+    ;;
+
+11) sudo nano /etc/hosts
+    ;;
+
+12)  if [ -z "$(ls -A /etc/samba/smb.conf)" ]; then
+    echo "Install Samba"
+    sudo apt-get install samba
+    else
+    echo "Samba sudah diinstall"
+    fi
+    ;;
+
+13) if [ -z "$(ls -A /etc/samba/smb.conf)" ]; then
+    echo "Samba belum diinstall"
+    else
+    sudo mkdir /home/share
+    cp support/samba1/smb.conf /etc/samba
+    service smbd restart
+    chmod o-w /home/share 
+    fi
+    ;;
+
+14) if [ -z "$(ls -A /etc/samba/smb.conf)" ]; then
+    echo "Samba belum diinstall"
+    else
+    sudo mkdir /home/share
+    cp support/samba2/smb.conf /etc/samba
+    service smbd restart
+    chmod o+w /home/share
+    fi
+    ;;
+
+15) if [ -z "$(ls -A /etc/samba/smb.conf)" ]; then
+    echo "Samba belum diinstall"
+    else
+    sudo useradd -m xcode
+    sudo passwd xcode
+    sudo mkdir /home/share
+    cp support/samba3/smb.conf /etc/samba
+    smbpasswd -a xcode
+    chown -R xcode.xcode /home/share
+    chmod u-w /home/share    
+    service smbd restart
+    fi
+    ;;
+
+16) if [ -z "$(ls -A /etc/samba/smb.conf)" ]; then
+    echo "Samba belum diinstall"
+    else
+    sudo useradd -m xcode
+    sudo passwd xcode
+    sudo mkdir /home/share
+    cp support/samba4/smb.conf /etc/samba
+    smbpasswd -a xcode
+    chown -R xcode.xcode /home/share
+    chmod u+w /home/share
+    service smbd restart
+    fi
+    ;;
+
+17) if [ -z "$(ls -A /var/log/apache2/access.log*)" ]; then
+    echo "Tidak terdeteksi access.log untuk apache2"
+    else
+    sudo ls -l /var/log/apache2/access.log*
+    fi
+    ;;
+18) if [ -z "$(ls -A /var/log/apache2/access.log)" ]; then
+    echo "Tidak terdeteksi access.log untuk apache2"
+    else
+    sudo tail -f /var/log/apache2/access.log
+    fi
+    ;;
+
+19) if [ -z "$(ls -A /var/log/apache2/access.log)" ]; then
+    echo "Tidak terdeteksi access.log untuk apache2"
+    else
+    sudo nano /var/log/apache2/access.log
+    fi
+    ;;
+
+20) read -p "Apakah anda yakin akan restart? y/n :" -n 1 -r
+    echo 
+    if [[ ! $REPLY =~ ^[Nn]$ ]]
+    then
+    reboot
+    fi
+    ;;
+
+21) exit
+    ;;
+*)    echo "Maaf, menu tidak ada"
+esac
+echo ""
+echo "X-code Pandawa Server"
+echo "Oleh Kurniawan - trainingxcode@gmail.com. xcode.or.id"
+echo ""
+echo -n "Kembali ke menu? [y/n]: ";
+read again;
+while [ $again != 'Y' ] && [ $again != 'y' ] && [ $again != 'N' ] && [ $again != 'n' ];
+do
+echo "Masukkan yang anda pilih tidak ada di menu";
+echo -n "Kembali ke menu? [y/n]: ";
+read again;
+done
+done
