@@ -35,6 +35,15 @@ chmod -R 777 *
 
 ./xcodeserver (untuk server
 
+Perbaikan dari v1.0.0
+---------------------
+
+- Instalasi dengan deb dihapus, cukup menggunakan git clone
+
+- Instalasi X-code Pandawa dimasukkan juga langsung setting ip, sehingga setelah restart, langsung bisa digunakan ip-nya
+
+- Penambahan informasi tentang penggantian nama enp0s3 ke eth0
+
 Support gratis
 --------------
 
