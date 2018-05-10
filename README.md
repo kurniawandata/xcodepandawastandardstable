@@ -44,11 +44,13 @@ Perintah instalasi dan menjalankannya
 Perbaikan dari v1.0.0 ke 1.0.1
 ---------------------
 
-- Instalasi dengan deb dihapus, cukup menggunakan git clone
+- Instalasi dengan deb dihapus, cukup menggunakan git clone sehingga jika ada bug bisa cepat diperbaiki
 
 - Instalasi X-code Pandawa dimasukkan juga langsung setting ip, sehingga setelah restart, langsung bisa digunakan ip-nya
 
 - Penambahan informasi tentang penggantian nama enp0s3 ke eth0
+
+- rc.local tidak ditambahkan tapi disalin dari direktori support, sehingga semakin memudahkan untuk reset rc.local ke awal untuk mendukung x-code pandawa 
 
 Support gratis
 --------------
