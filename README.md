@@ -38,8 +38,6 @@ chmod -R 777 *
 Support gratis
 --------------
 
-Free Ubuntu 16.04 ISO file
-
 Training X-code pandawa standard gratis di Jogja 
 
 http://xcodetraining.com/xcodepandawa 
