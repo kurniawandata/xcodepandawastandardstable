@@ -49,9 +49,9 @@ Perbaikan dari v1.0.0
 Support gratis
 --------------
 
-Training X-code pandawa standard gratis di Jogja 
+- Training X-code pandawa standard gratis di Jogja : http://xcodetraining.com/xcodepandawa 
 
-http://xcodetraining.com/xcodepandawa 
+- Group whatsapp, untuk bergabung, kontak Lina :  0813 9388 2080
 
 Progammer 
 ---------
