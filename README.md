@@ -57,7 +57,7 @@ Perbaikan dari v1.0.1 ke 1.0.2
 
 - Penambahan fitur DHCP Leases
 
-Perbaikan dari v1.0.2 ke 1.0.3
+Perbaikan dari v1.0.2 ke 1.0.3 / 1.0.4
 ---------------------
 
 - Fitur DHCP Leases (Real time)
