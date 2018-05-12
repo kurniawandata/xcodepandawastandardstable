@@ -1,6 +1,6 @@
 # xcodepandawastandardstable
 
-X-code Pandawa Standard for Ubuntu 16.04 LTS v1.0.1 Stable
+X-code Pandawa Standard for Ubuntu 16.04 LTS v1.0.2 Stable
 ------------------------------------------
 
 ![alt text](http://xcode.or.id/04_small-logo.png)
@@ -51,6 +51,12 @@ Perbaikan dari v1.0.0 ke 1.0.1
 - Penambahan informasi tentang penggantian nama enp0s3 ke eth0
 
 - rc.local tidak ditambahkan tapi disalin dari direktori support, sehingga semakin memudahkan untuk reset rc.local ke awal untuk mendukung x-code pandawa 
+
+Perbaikan dari v1.0.1 ke 1.0.2
+---------------------
+
+- Penambahan fitur DHCP Leases
+
 
 Support gratis
 --------------
