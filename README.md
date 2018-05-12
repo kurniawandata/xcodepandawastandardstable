@@ -1,6 +1,6 @@
 # xcodepandawastandardstable
 
-X-code Pandawa Standard for Ubuntu 16.04 LTS v1.0.2 Stable
+X-code Pandawa Standard for Ubuntu 16.04 LTS v1.0.3 Stable
 ------------------------------------------
 
 ![alt text](http://xcode.or.id/04_small-logo.png)
@@ -56,6 +56,11 @@ Perbaikan dari v1.0.1 ke 1.0.2
 ---------------------
 
 - Penambahan fitur DHCP Leases
+
+Perbaikan dari v1.0.2 ke 1.0.3
+---------------------
+
+- Fitur DHCP Leases (Real time)
 
 
 Support gratis
