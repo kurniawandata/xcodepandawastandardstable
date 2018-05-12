@@ -31,8 +31,8 @@ echo " [16] Setting Password VPN Server                                   ";
 echo " [17] Setting ms-dns pada VPN Server                                ";
 echo " =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=";
 echo " Log dan lainnya                                                    ";
-echo " [18] Lihat Log apa yang dibuka client (real time)                  ";
-echo " [19] Lihat log semua log yang tersimpan                            ";
+echo " [18] Lihat user yang mendapatkan akses dari DHCP Server            ";
+echo " [19] Lihat log website yang dibuka client                          ";
 echo " [20] Lihat ukuran cache squid                                      ";
 echo " [21] Edit squid.conf                                               ";
 echo " [22] Ganti rc.local untuk NAT otomatis jika direstart              ";
@@ -251,10 +251,10 @@ case $choice in
     fi
     ;;
 
-18) if [ -z "$(ls -l /var/log/squid/access.log)" ]; then
-    echo "Tidak terdeteksi log access pada squid"
+18) if [ -z "$(ls -l /var/lib/dhcp/dhcpd.leases)" ]; then
+    echo "Tidak terdeteksi DHCP Server"
     else
-    sudo tail -f /var/log/squid/access.log
+    sudo nano /var/lib/dhcp/dhcpd.leases
     fi 
     ;;
  
