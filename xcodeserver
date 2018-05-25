@@ -73,7 +73,7 @@ case $choice in
     sudo apt-get install apache2
     echo "Apache2 sudah diinstall"
     sudo apt-get install mysql-server
-    echo "DHCP Server sudah diinstall"
+    echo "MySQL Server sudah diinstall"
     sudo apt-get install phpmyadmin
     echo "PHPMyadmin sudah diinstall"
     fi
