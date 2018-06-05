@@ -3,13 +3,13 @@
 #Program ini dapat digunakan untuk personal ataupun komersial.
 #X-code Media - xcode.or.id / xcodetraining.com 
 again='y'
-while [ $again == 'Y' ] || [ $again == 'y' ];
+while [[ $again == 'Y' ]] || [[ $again == 'y' ]];
 do
 clear
 echo "====================================================================";
 echo " X-code Pandawa Router for Ubuntu 16.04 Server                      ";
 echo " Progammer : Kurniawan. xcode.or.id                                 ";
-echo " Version 1.0.4 - 11/05/2018                                         ";
+echo " Version 1.0.5 - 06/06/2018                                         ";
 echo "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-";
 echo " Router & Server pendukung router                                   ";
 echo " [1]  Install X-code Pandawa (Untuk ganti nama ke eth0 dan eth1)    ";
@@ -305,7 +305,7 @@ echo "Oleh Kurniawan - trainingxcode@gmail.com. xcode.or.id"
 echo ""
 echo -n "Kembali ke menu? [y/n]: ";
 read again;
-while [ $again != 'Y' ] && [ $again != 'y' ] && [ $again != 'N' ] && [ $again != 'n' ];
+while [[ $again != 'Y' ]] && [[ $again != 'y' ]] && [[ $again != 'N' ]] && [[ $again != 'n' ]];
 do
 echo "Masukkan yang anda pilih tidak ada di menu";
 echo -n "Kembali ke menu? [y/n]: ";
