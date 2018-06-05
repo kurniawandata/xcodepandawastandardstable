@@ -1,6 +1,6 @@
 # xcodepandawastandardstable
 
-X-code Pandawa Standard for Ubuntu 16.04 LTS v1.0.4 Stable
+X-code Pandawa Standard for Ubuntu 16.04 LTS v1.0.5 Stable
 ------------------------------------------
 
 ![alt text](http://xcode.or.id/04_small-logo.png)
