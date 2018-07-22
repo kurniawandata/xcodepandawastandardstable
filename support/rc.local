@@ -2,28 +2,10 @@
 #
 # rc.local
 #
-# This script is executed at the end of each multiuser runlevel.
-# Make sure that the script will "exit 0" on success or any other
-# value on error.
-#
-# In order to enable or disable this script just change the execution
-# bits.
-#
-# By default this script does nothing.
 
 sudo sysctl -w net.ipv4.ip_forward=1
 /sbin/iptables -P FORWARD ACCEPT
 /sbin/iptables --table nat -A POSTROUTING -o eth0 -j MASQUERADE
-
-#Hilangkan tanda pagar pada perintah di bawah ini untuk mengaktifkan bandwidth managemen secara otomatis setelah restart.
-#/etc/init.d/rc.htb start_eth1
-
-#Hilangkan tanda pagar pada perintah iptables di bawah ini untuk mengaktifkan port forwarding secara otomatis setelah restart, jangan lupa diganti untuk ipaddresswanrouter, nomorportyangdiforward dan ipaddresslankomputeryangdituju.
-#sysctl -w net.ipv4.ip_forward=1
-#iptables -t nat -A PREROUTING -j DNAT -d ipaddresswanrouter -p tcp --dport nomorportyangdiforward --to ipaddresslankomputeryangdituju
-
-#Hilangkan tanda pagar pada perintah iptables di bawah ini untuk mengaktifkan Squid secara otomatis setelah restart, jangan lupa diganti ipaddresslanrouter dengan ip address lan router.
-#iptables -t nat -A PREROUTING -i eth1 -p tcp -m tcp --dport 80 -j DNAT --to-destination ipaddresslanrouter:3127
 
 exit 0
 
