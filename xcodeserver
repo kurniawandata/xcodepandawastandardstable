@@ -9,7 +9,7 @@ clear
 echo "=================================================================";
 echo " X-code Pandawa Server for Ubuntu 16.04                          ";
 echo " Progammer : Kurniawan. xcode.or.id                              ";
-echo " Version 1.0.1 - 11/05/2018                                      ";
+echo " Version 1.0.2 - 11/05/2018                                      ";
 echo "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=";
 echo " Installasi server & konfigurasi                                 ";
 echo " [1]  Install X-code Pandawa Server (Untuk ganti nama ke eth0)   ";
@@ -55,7 +55,6 @@ case $choice in
 2)  if [ -z "$(ls -l /etc/network/interfaces)" ]; then
     echo "Tidak terdeteksi ada /etc/network/interfaces"
     else
-    cp support/server/interfaces /etc/network/
     sudo nano /etc/network/interfaces
     read -p "Apakah anda mau restart koneksi eth0 sekarang? y/n :" -n 1 -r
     echo 
