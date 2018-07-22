@@ -59,7 +59,6 @@ case $choice in
 2)  if [ -z "$(ls -l /etc/network/interfaces)" ]; then
     echo "Tidak terdeteksi ada /etc/network/interfaces"
     else
-    cp support/interfaces /etc/network/
     sudo nano /etc/network/interfaces
     read -p "Apakah anda mau restart koneksi eth0 & eth1 sekarang? y/n :" -n 1 -r
     echo 
