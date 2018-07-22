@@ -175,7 +175,7 @@ case $choice in
     echo "Sebelum edit rc.local, tambahkan dulu NAT, HTB, dll ke rc.local yang ada pada menu"
     ;;
 
-12) echo -n "Masukkan ip  LAN: "
+12) echo -n "Masukkan ip  LAN pada router: "
     read iplan2
     if [ -z "$(ls -A /etc/squid/squid.conf)" ]; then
     echo "Squid tidak terdeteksi"
@@ -189,7 +189,7 @@ case $choice in
     fi
     ;;
 
-13) echo -n "Masukkan ip  LAN: "
+13) echo -n "Masukkan ip  LAN pada router: "
     read iplan3
     if [ -z "$(ls -l /etc/squid/squid.conf)" ]; then
     echo "Squid tidak terdeteksi"
