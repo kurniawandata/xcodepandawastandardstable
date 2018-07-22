@@ -1,6 +1,6 @@
 # xcodepandawastandardstable
 
-X-code Pandawa Standard for Ubuntu 16.04 LTS v1.0.5 Stable
+X-code Pandawa Standard for Ubuntu 16.04 LTS v1.0.6 Stable
 ------------------------------------------
 
 Released 23/07/2018
