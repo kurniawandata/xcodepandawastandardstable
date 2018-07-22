@@ -1,6 +1,6 @@
 # xcodepandawastandardstable
 
-X-code Pandawa Standard for Ubuntu 16.04 LTS v1.0.7 Stable [Menggunakan algoritma baru, saat README.md ini dibuat, algoritma baru ini belum diimplimentasikan di aplikasi x-code pandawa manapun, dengan algoritma baru ini maka anda tidak harus memasukkan ip di rc.local, tapi semua sudah diotomatisasi.
+X-code Pandawa Standard for Ubuntu 16.04 LTS v1.0.7 Stable [Menggunakan algoritma baru, saat README.md ini dibuat, algoritma baru ini belum diimplimentasikan di aplikasi x-code pandawa manapun, dengan algoritma baru ini maka anda tidak harus memasukkan ip untuk squid ataupun port forwarding di rc.local, termasuk juga untuk bandwidth managemen tidak perlu manual dengan menghapus tanda #, tapi semua sudah diotomatisasi.
 ------------------------------------------
 
 Released 23/07/2018
