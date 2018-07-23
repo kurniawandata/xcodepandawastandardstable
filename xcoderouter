@@ -124,8 +124,7 @@ case $choice in
     then
     if [ -z "$(ls -l /etc/squid/squid.conf)" ]; then
     sudo apt-get install squid3 
-    echo -n "Masukkan ip LAN pada router: "
-    read iplan2
+    iplan2="$(ifconfig | grep -A 1 'eth1' | tail -1 | cut -d ':' -f 2 | cut -d ' ' -f 1)"
     sudo rm /etc/squid/squid.conf
     sudo cp support/squid1/squid.conf /etc/squid/
     sudo iptables -t nat -A PREROUTING -i eth1 -p tcp -m tcp --dport 80 -j DNAT --to-destination $iplan2:3127
