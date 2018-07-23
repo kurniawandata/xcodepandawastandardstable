@@ -46,11 +46,12 @@ case $choice in
 1)  if [ -z "$(sudo ls -A /etc/default/grub)" ]; then
     echo "Tidak terdeteksi grub, anda yakin pakai Ubuntu 16.04 ?"
     else
-    cp support/grub /etc/default/grub
+    sudo cp support/grub /etc/default/grub
     grub-mkconfig -o /boot/grub/grub.cfg
-    cp support/resolved.conf /etc/systemd/
+    sudo cp support/resolved.conf /etc/systemd/
     sudo systemctl restart systemd-resolved
-    cp support/interfaces /etc/network/
+    sudo cp support/interfaces /etc/network/
+    sudo apt-get install arp-scan
     sudo nano /etc/network/interfaces
     read -p "Tekan enter untuk restart"
     reboot
@@ -109,7 +110,7 @@ case $choice in
     sudo chmod 755 /etc/init.d/rc.htb
     sudo nano /etc/htb/eth1-qos.cfg
     sudo /etc/init.d/rc.htb start_eth1
-    sed -i "/exit 0/i\/etc/init.d/rc.htb start_eth1" /etc/rc.local
+    sudo sed -i "/exit 0/i\/etc/init.d/rc.htb start_eth1" /etc/rc.local
     echo "hbt sudah diinstall"
     else
     echo "hbt sudah ada, tidak perlu diinstall lagi"
@@ -125,10 +126,10 @@ case $choice in
     sudo apt-get install squid3 
     echo -n "Masukkan ip LAN pada router: "
     read iplan2
-    rm /etc/squid/squid.conf
+    sudo rm /etc/squid/squid.conf
     sudo cp support/squid1/squid.conf /etc/squid/
     sudo iptables -t nat -A PREROUTING -i eth1 -p tcp -m tcp --dport 80 -j DNAT --to-destination $iplan2:3127
-    sed -i "/exit 0/i\sudo iptables -t nat -A PREROUTING -i eth1 -p tcp -m tcp --dport 80 -j DNAT --to-destination "$iplan2":3127" /etc/rc.local
+    sudo sed -i "/exit 0/i\sudo iptables -t nat -A PREROUTING -i eth1 -p tcp -m tcp --dport 80 -j DNAT --to-destination "$iplan2":3127" /etc/rc.local
     read -p "Log akan aktif jika linux sudah dilakukan restart"
     echo "Squid sudah diinstall"
     else
@@ -142,7 +143,7 @@ case $choice in
     else
     echo "Setting DHCP Server"
     sudo nano /etc/dhcp/dhcpd.conf
-    service isc-dhcp-server restart
+    sudo service isc-dhcp-server restart
     fi
     ;;   
 
@@ -178,21 +179,22 @@ case $choice in
 
 11) echo "Isi file rc.local :"
     sudo cat /etc/rc.local
-    echo -n "Masukkan ip WAN pada router: "
-    read ipwan
+    ipwan="$(ifconfig | grep -A 1 'eth0' | tail -1 | cut -d ':' -f 2 | cut -d ' ' -f 1)"
+    echo "Daftar ip LAN yang dapat dituju :"
+    sudo arp-scan --interface=eth1 --localnet
     echo -n "Masukkan ip LAN pada server yang dituju : "
     read iplan
     echo -n "Masukkan nomor port yang akan diforward : "
     read portip
     sudo sysctl -w net.ipv4.ip_forward=1
     sudo iptables -t nat -A PREROUTING -j DNAT -d $ipwan -p tcp --dport $portip --to $iplan
-    sed -i "/exit 0/i\sudo iptables -t nat -A PREROUTING -j DNAT -d "$ipwan" -p tcp --dport "$portip" --to "$iplan"" /etc/rc.local
-    ;;
+    sudo sed -i "/exit 0/i\sudo iptables -t nat -A PREROUTING -j DNAT -d "$ipwan" -p tcp --dport "$portip" --to "$iplan"" /etc/rc.local
+   ;;
 
 12) if [ -z "$(ls -A /etc/squid/squid.conf)" ]; then
     echo "Squid tidak terdeteksi"
     else
-    rm /etc/squid/squid.conf
+    sudo rm /etc/squid/squid.conf
     sudo cp support/squid1/squid.conf /etc/squid/
     echo "Access_log : Enabled, Cache : disabled"
     read -p "Log akan aktif jika linux sudah dilakukan restart"
@@ -202,7 +204,7 @@ case $choice in
 13) if [ -z "$(ls -l /etc/squid/squid.conf)" ]; then
     echo "Squid tidak terdeteksi"
     else
-    rm /etc/squid/squid.conf
+    sudo rm /etc/squid/squid.conf
     sudo cp support/squid2/squid.conf /etc/squid/
     echo "Access_log : Enabled, Cache : enabled"
     read -p "Log akan aktif jika linux sudah dilakukan restart"
@@ -222,7 +224,7 @@ case $choice in
     sudo nano /etc/pptpd.conf
     sudo nano /etc/ppp/chap-secrets
     sudo nano /etc/ppp/pptpd-options
-    service pptpd restart
+    sudo service pptpd restart
     else
     echo "Sudah ada PPTP Server"
     fi
@@ -234,7 +236,7 @@ case $choice in
     else
     echo "Edit pptpd.conf" 
     sudo nano /etc/pptpd.conf
-    service pptpd restart
+    sudo service pptpd restart
     fi
     ;;
 
@@ -243,7 +245,7 @@ case $choice in
     else
     echo "Edit file chap-secrets" 
     sudo nano /etc/ppp/chap-secrets
-    service pptpd restart
+    sudo service pptpd restart
     fi
     ;;
 
@@ -252,7 +254,7 @@ case $choice in
     else
     echo "Edit file pptpd-options" 
     sudo nano /etc/ppp/pptpd-options
-    service pptpd restart
+    sudo service pptpd restart
     fi
     ;;
 
@@ -285,7 +287,7 @@ case $choice in
     echo "Tidak terdeteksi ada file rc.local di /etc/"
     else
     echo "File rc.local di folder /etc/ disisipkan NAT dan HBT"
-    cp support/rc.local /etc
+    sudo cp support/rc.local /etc
     fi
     ;; 
 
