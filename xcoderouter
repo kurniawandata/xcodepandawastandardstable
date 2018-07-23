@@ -51,6 +51,7 @@ case $choice in
     sudo cp support/resolved.conf /etc/systemd/
     sudo systemctl restart systemd-resolved
     sudo cp support/interfaces /etc/network/
+    sudo cp support/rc.local /etc/
     sudo apt-get install arp-scan
     sudo nano /etc/network/interfaces
     read -p "Tekan enter untuk restart"
