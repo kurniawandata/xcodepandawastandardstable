@@ -47,7 +47,7 @@ case $choice in
     echo "Tidak terdeteksi grub, anda yakin pakai Ubuntu 16.04 ?"
     else
     sudo cp support/grub /etc/default/grub
-    grub-mkconfig -o /boot/grub/grub.cfg
+    sudo grub-mkconfig -o /boot/grub/grub.cfg
     sudo cp support/resolved.conf /etc/systemd/
     sudo systemctl restart systemd-resolved
     sudo cp support/interfaces /etc/network/
