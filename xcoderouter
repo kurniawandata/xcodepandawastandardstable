@@ -9,7 +9,7 @@ clear
 echo "====================================================================";
 echo " X-code Pandawa Router for Ubuntu 16.04 Server                      ";
 echo " Progammer : Kurniawan. xcode.or.id                                 ";
-echo " Version 1.8 - 24/07/2018                                         ";
+echo " Version 1.8 - 05/01/2020                                           ";
 echo "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-";
 echo " Router & Server pendukung router                                   ";
 echo " [1]  Install X-code Pandawa (Untuk ganti nama ke eth0 dan eth1)    ";
@@ -18,29 +18,26 @@ echo " [3]  Install NAT, DHCP Server & Bandwidth monitoring               ";
 echo " [4]  Install HTB untuk bandwidth managemen                         ";
 echo " [5]  Install Squid untuk log dan cache pada client                 ";
 echo " [6]  Setting DHCP Server                                           ";
-echo " [7]  Setting HTB Bandwidth managemen                               ";
-echo " [8]  Matikan HTB Bandwidth managemen                               ";
-echo " [9]  Hidupkan HTB Bandwidth managemen                              ";
-echo " [10] Jalankan monitoring Bandwidth                                 ";
-echo " [11] Port Forwarding                                               ";
-echo " [12] Pasang Squid + Log (transparent)                              ";
-echo " [13] Pasang Squid + Log + Cache (transparent)                      ";
-echo " [14] Install VPN Server PPTP                                       ";
-echo " [15] Setting ip client VPN Server                                  ";
-echo " [16] Setting Password VPN Server                                   ";
-echo " [17] Setting ms-dns pada VPN Server                                ";
+echo " [7]  Jalankan monitoring Bandwidth                                 ";
+echo " [8]  Port Forwarding                                               ";
+echo " [9]  Pasang Squid + Log (transparent)                              ";
+echo " [10] Pasang Squid + Log + Cache (transparent)                      ";
+echo " [11] Install VPN Server PPTP                                       ";
+echo " [12] Setting ip client VPN Server                                  ";
+echo " [13] Setting Password VPN Server                                   ";
+echo " [14] Setting ms-dns pada VPN Server                                ";
 echo " =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=";
 echo " Log dan lainnya                                                    ";
-echo " [18] Lihat user yang mendapatkan akses dari DHCP Server            ";
-echo " [19] Lihat log website yang dibuka client                          ";
-echo " [20] Lihat ukuran cache squid                                      ";
-echo " [21] Edit squid.conf                                               ";
-echo " [22] Reset rc.local hanya untuk mengaktifkan NAT                   ";
-echo " [23] Edit rc.local                                                 ";
-echo " [24] Reboot                                                        ";
-echo " [25] Exit                                                          ";
+echo " [15] Lihat user yang mendapatkan akses dari DHCP Server            ";
+echo " [16] Lihat log website yang dibuka client                          ";
+echo " [17] Lihat ukuran cache squid                                      ";
+echo " [18] Edit squid.conf                                               ";
+echo " [19] Reset rc.local hanya untuk mengaktifkan NAT                   ";
+echo " [20] Edit rc.local                                                 ";
+echo " [21] Reboot                                                        ";
+echo " [22] Exit                                                          ";
 echo "====================================================================";
-read -p " Masukkan Nomor Pilihan Anda [1 - 25] : " choice;
+read -p " Masukkan Nomor Pilihan Anda [1 - 22] : " choice;
 echo "";
 case $choice in
 1)  if [ -z "$(sudo ls -A /etc/default/grub)" ]; then
@@ -147,37 +144,11 @@ case $choice in
     fi
     ;;   
 
-7)  if [ -z "$(ls -A /etc/init.d/rc.htb)" ]; then
-    echo "Tidak terdeteksi Htb - Bandwidth managemen"
-    else
-    echo "Setting htb"
-    sudo nano /etc/htb/eth1-qos.cfg
-    sudo /etc/init.d/rc.htb stop_eth1
-    sudo /etc/init.d/rc.htb start_eth1
-    fi
-    ;;
-
-8)  if [ -z "$(ls -A /etc/init.d/rc.htb)" ]; then
-    echo "Tidak terdeteksi Htb - Bandwidth managemen"
-    else
-    sudo /etc/init.d/rc.htb stop_eth1
-    echo "htb sudah dimatikan"
-    fi
-    ;;
-
-9)  if [ -z "$(ls -A /etc/init.d/rc.htb)" ]; then
-    echo "Tidak terdeteksi Htb - Bandwidth managemen"
-    else
-    sudo /etc/init.d/rc.htb start_eth1
-    echo "htb bandwidth managemen sudah dihidupkan"
-    fi
-    ;;
-
-10) sudo iptraf
+7) sudo iptraf
     ;;
 
 
-11) echo "Isi file rc.local :"
+8) echo "Isi file rc.local :"
     sudo cat /etc/rc.local
     ipwan="$(ifconfig | grep -A 1 'eth0' | tail -1 | cut -d ':' -f 2 | cut -d ' ' -f 1)"
     echo "Daftar ip LAN yang dapat dituju :"
@@ -191,7 +162,7 @@ case $choice in
     sudo sed -i "/exit 0/i\sudo iptables -t nat -A PREROUTING -j DNAT -d "$ipwan" -p tcp --dport "$portip" --to "$iplan"" /etc/rc.local
    ;;
 
-12) if [ -z "$(ls -A /etc/squid/squid.conf)" ]; then
+9) if [ -z "$(ls -A /etc/squid/squid.conf)" ]; then
     echo "Squid tidak terdeteksi"
     else
     sudo rm /etc/squid/squid.conf
@@ -201,7 +172,7 @@ case $choice in
     fi
     ;;
 
-13) if [ -z "$(ls -l /etc/squid/squid.conf)" ]; then
+10) if [ -z "$(ls -l /etc/squid/squid.conf)" ]; then
     echo "Squid tidak terdeteksi"
     else
     sudo rm /etc/squid/squid.conf
@@ -211,7 +182,7 @@ case $choice in
     fi
     ;;
 
-14) read -p "Apakah anda yakin install VPN Server PPTP  ? y/n :" -n 1 -r
+11) read -p "Apakah anda yakin install VPN Server PPTP  ? y/n :" -n 1 -r
     echo  ""
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then
@@ -231,7 +202,7 @@ case $choice in
     fi
     ;;
 
-15) if [ -z "$(ls -l /etc/pptpd.conf)" ]; then
+12) if [ -z "$(ls -l /etc/pptpd.conf)" ]; then
     echo "Tidak terdeteksi file pptpd.conf pada VPN Server"
     else
     echo "Edit pptpd.conf" 
@@ -240,7 +211,7 @@ case $choice in
     fi
     ;;
 
-16) if [ -z "$(ls -l /etc/ppp/chap-secrets)" ]; then
+13) if [ -z "$(ls -l /etc/ppp/chap-secrets)" ]; then
     echo "Tidak terdeteksi file chap-secrets pada VPN Server"
     else
     echo "Edit file chap-secrets" 
@@ -249,7 +220,7 @@ case $choice in
     fi
     ;;
 
-17) if [ -z "$(ls -l /etc/pptpd.conf)" ]; then
+14) if [ -z "$(ls -l /etc/pptpd.conf)" ]; then
     echo "Tidak terdeteksi file pptpd-options pada VPN Server"
     else
     echo "Edit file pptpd-options" 
@@ -258,32 +229,32 @@ case $choice in
     fi
     ;;
 
-18) if [ -z "$(ls -l /var/lib/dhcp/dhcpd.leases)" ]; then
+15) if [ -z "$(ls -l /var/lib/dhcp/dhcpd.leases)" ]; then
     echo "Tidak terdeteksi DHCP Server"
     else
     sudo perl support/dhcplist.pl
     fi 
     ;;
  
-19) if [ -z "$(ls -l /var/log/squid/access.log)" ]; then
+16) if [ -z "$(ls -l /var/log/squid/access.log)" ]; then
     echo "Tidak terdeteksi log access pada squid"
     else
     sudo nano /var/log/squid/access.log
     fi
     ;;
 
-20) du -s /var/spool/squid
+17) du -s /var/spool/squid
     read -p "Tekan enter untuk melanjutkan"
     ;;
 
-21) if [ -z "$(ls -l /etc/squid/squid.conf)" ]; then
+18) if [ -z "$(ls -l /etc/squid/squid.conf)" ]; then
     echo "Tidak terdeteksi squid"
     else
     sudo nano /etc/squid/squid.conf
     fi
     ;;
 
-22) if [ -z "$(sudo ls -A /etc/rc.local)" ]; then
+19) if [ -z "$(sudo ls -A /etc/rc.local)" ]; then
     echo "Tidak terdeteksi ada file rc.local di /etc/"
     else
     echo "File rc.local di folder /etc/ disisipkan NAT dan HBT"
@@ -291,10 +262,10 @@ case $choice in
     fi
     ;; 
 
-23) sudo nano /etc/rc.local
+20) sudo nano /etc/rc.local
     ;;
 
-24) read -p "Apakah anda yakin akan restart? y/n :" -n 1 -r
+21) read -p "Apakah anda yakin akan restart? y/n :" -n 1 -r
     echo 
     if [[ ! $REPLY =~ ^[Nn]$ ]]
     then
@@ -302,7 +273,7 @@ case $choice in
     fi
     ;;
 
-25) exit
+22) exit
     ;;
 *)    echo "Maaf, menu tidak ada"
 esac
