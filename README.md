@@ -8,7 +8,7 @@ Released 24/07/2018
 
 ![alt text](http://xcode.or.id/04_small-logo.png)
 
-Aplikasi untuk membangun NAT, DHCP Server, bandwidth managemen, access log, cache web, port forwarding, VPN Server, apache2, mysql-server, virtualhost, DNS Server & Samba secara cepat termasuk konfigurasinya. 
+Aplikasi untuk membangun NAT, DHCP Server, access log, cache web, port forwarding, VPN Server, apache2, mysql-server, virtualhost, DNS Server & Samba secara cepat termasuk konfigurasinya. 
 
 Cara menggunakan :
 ------------------
